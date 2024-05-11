@@ -1,7 +1,9 @@
 var userInput = document.getElementById("userInput")
 var main = document.getElementById("main")
-// console.log(userInput.value)
+var btn = document.getElementById("deleteAll")
+btn.hidden = true
 
+// Add Todo
 function addItem() {
     if (userInput.value !== "") {
         var node = document.createElement("P")
@@ -24,7 +26,8 @@ function addItem() {
         node.appendChild(delBtn)
 
         main.appendChild(node)
-        //    console.log(node)
+        btn.hidden = false
+
     } else {
         alert("Invalid Input")
     }
@@ -32,15 +35,18 @@ function addItem() {
     userInput.value = ""
 }
 
+// Delete Todo
 function deleteItem(btn) {
     btn.parentNode.remove()
-    
-    console.log(btn.parentNode)
 }
 
+// Edit Todo
 function editItem(btn) {
     var editVal = prompt("Edit your todo")
     btn.parentNode.childNodes[0].nodeValue = editVal
-    
-    console.log(btn.parentNode.childNodes[0])
+}
+
+// Delete All
+function deleteAll(){
+    main.innerHTML = ""
 }
